@@ -18,7 +18,7 @@ export const GlassCard = ({ className, children, hoverEffect = true, ...props }:
         hoverEffect && "hover:border-primary/50 hover:shadow-[0_8px_32px_rgba(37,99,235,0.15)]",
         className
       )}
-      {...props}
+      {...(props as any)}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       <div className="relative z-10">{children}</div>
