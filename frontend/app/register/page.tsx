@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { GlassCard } from "@/components/GlassCard";
 import { AnimatedButton } from "@/components/AnimatedButton";
-import { UserPlus, CheckCircle2, Loader2, AlertCircle, Phone, Building2, User } from "lucide-react";
+import { UserPlus, CheckCircle2, Loader2, AlertCircle, Phone, Building2, User, ChevronDown, ChevronUp } from "lucide-react";
 
 export default function RegisterPage() {
   const [formData, setFormData] = useState({ 
@@ -18,6 +18,7 @@ export default function RegisterPage() {
   });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const [showStandards, setShowStandards] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -146,27 +147,43 @@ export default function RegisterPage() {
             </div>
 
             <div className="space-y-3">
-              <label className="text-sm font-medium text-foreground">Which ISO standard are you interested in?</label>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {[
-                  "ISO 9001 (Quality Management)",
-                  "ISO 27001 (Information Security)",
-                  "ISO 14001 (Environmental)",
-                  "ISO 45001 (Occupational Health & Safety)",
-                  "Multiple / Not Sure Yet"
-                ].map((std) => (
-                  <div 
-                    key={std}
-                    onClick={() => setFormData({...formData, standard: std})}
-                    className={`flex items-center space-x-3 cursor-pointer p-3 rounded-lg border transition-colors ${formData.standard === std ? 'border-primary bg-primary/10' : 'border-white/10 bg-white/5 hover:bg-white/10'}`}
-                  >
-                    <div className={`w-4 h-4 rounded-full border flex items-center justify-center shrink-0 ${formData.standard === std ? 'border-primary' : 'border-muted-foreground'}`}>
-                      {formData.standard === std && <div className="w-2 h-2 rounded-full bg-primary" />}
-                    </div>
-                    <span className={`text-sm ${formData.standard === std ? 'text-primary font-medium' : 'text-foreground'}`}>{std}</span>
-                  </div>
-                ))}
+              <label className="text-sm font-medium text-foreground">Which training standard are you interested in?</label>
+              
+              <div 
+                onClick={() => setShowStandards(!showStandards)}
+                className="flex items-center justify-between w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-foreground cursor-pointer hover:bg-white/10 transition-colors"
+              >
+                <span className={formData.standard ? 'text-primary font-medium' : 'text-muted-foreground'}>
+                  {formData.standard || "Select a training standard..."}
+                </span>
+                {showStandards ? <ChevronUp className="w-5 h-5 text-muted-foreground" /> : <ChevronDown className="w-5 h-5 text-muted-foreground" />}
               </div>
+
+              {showStandards && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2 p-3 bg-black/20 border border-white/10 rounded-lg">
+                  {[
+                    "Awareness",
+                    "Internal Auditor",
+                    "Lead Auditor",
+                    "Lead Implementor",
+                    "Multiple / Not Sure Yet"
+                  ].map((std) => (
+                    <div 
+                      key={std}
+                      onClick={() => {
+                        setFormData({...formData, standard: std});
+                        setShowStandards(false); // Auto-close when selected
+                      }}
+                      className={`flex items-center space-x-3 cursor-pointer p-3 rounded-lg border transition-colors ${formData.standard === std ? 'border-primary bg-primary/10' : 'border-white/10 bg-white/5 hover:bg-white/10'}`}
+                    >
+                      <div className={`w-4 h-4 rounded-full border flex items-center justify-center shrink-0 ${formData.standard === std ? 'border-primary' : 'border-muted-foreground'}`}>
+                        {formData.standard === std && <div className="w-2 h-2 rounded-full bg-primary" />}
+                      </div>
+                      <span className={`text-sm ${formData.standard === std ? 'text-primary font-medium' : 'text-foreground'}`}>{std}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
 
             {formData.userType === 'company' && (
