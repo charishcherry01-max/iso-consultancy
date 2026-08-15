@@ -21,11 +21,11 @@ export const Navbar = () => {
   }, []);
 
   const navLinks = [
+    { name: "Home", href: "/" },
+    { name: "About Us", href: "/about" },
     { name: "Services", href: "/services" },
     { name: "Standards", href: "/standards" },
-    { name: "Dashboard", href: "/dashboard" },
-    { name: "Doc Center", href: "/docs" },
-    { name: "Training", href: "/training" },
+    { name: "Contact", href: "/contact" },
   ];
 
   return (
