@@ -82,13 +82,13 @@ export default function ServicesPage() {
             animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/30 mb-6"
           >
-            <span className="text-sm font-medium text-white">Our Solutions</span>
+            <span className="text-sm font-medium text-foreground">Our Solutions</span>
           </motion.div>
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-heading font-bold text-white mb-6"
+            className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-6"
           >
             Comprehensive ISO Services
           </motion.h1>
@@ -116,7 +116,7 @@ export default function ServicesPage() {
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors border border-primary/20">
                     <service.icon className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
                   </div>
-                  <h3 className="text-xl font-heading font-bold text-white mb-3">
+                  <h3 className="text-xl font-heading font-bold text-foreground mb-3">
                     {service.title}
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed mb-6">

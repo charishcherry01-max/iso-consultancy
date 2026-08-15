@@ -37,7 +37,7 @@ export default function ConsultationPage() {
             variants={fadeInUp}
             className="text-center mb-12"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold text-white mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold text-foreground mb-6">
               Book Your Free <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Consultation</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -60,7 +60,7 @@ export default function ConsultationPage() {
                   <div className="w-20 h-20 rounded-full bg-green-500/20 flex items-center justify-center mb-6">
                     <CheckCircle2 className="w-10 h-10 text-green-400" />
                   </div>
-                  <h2 className="text-3xl font-heading font-bold text-white mb-4">Request Received!</h2>
+                  <h2 className="text-3xl font-heading font-bold text-foreground mb-4">Request Received!</h2>
                   <p className="text-muted-foreground mb-8 max-w-md">
                     Thank you for reaching out. One of our compliance specialists will contact you shortly to schedule your consultation.
                   </p>
@@ -72,54 +72,54 @@ export default function ConsultationPage() {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label htmlFor="firstName" className="text-sm font-medium text-white">First Name</label>
+                      <label htmlFor="firstName" className="text-sm font-medium text-foreground">First Name</label>
                       <input 
                         type="text" 
                         id="firstName" 
                         required
-                        className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                         placeholder="John"
                       />
                     </div>
                     <div className="space-y-2">
-                      <label htmlFor="lastName" className="text-sm font-medium text-white">Last Name</label>
+                      <label htmlFor="lastName" className="text-sm font-medium text-foreground">Last Name</label>
                       <input 
                         type="text" 
                         id="lastName" 
                         required
-                        className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                         placeholder="Doe"
                       />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium text-white">Work Email</label>
+                    <label htmlFor="email" className="text-sm font-medium text-foreground">Work Email</label>
                     <input 
                       type="email" 
                       id="email" 
                       required
-                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                       placeholder="john@company.com"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="company" className="text-sm font-medium text-white">Company Name</label>
+                    <label htmlFor="company" className="text-sm font-medium text-foreground">Company Name</label>
                     <input 
                       type="text" 
                       id="company" 
                       required
-                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                       placeholder="Acme Corp"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="standard" className="text-sm font-medium text-white">ISO Standard of Interest</label>
+                    <label htmlFor="standard" className="text-sm font-medium text-foreground">ISO Standard of Interest</label>
                     <select 
                       id="standard"
-                      className="w-full px-4 py-3 rounded-xl bg-[#0a1526] border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all appearance-none"
+                      className="w-full px-4 py-3 rounded-xl bg-[#0a1526] border border-white/10 text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all appearance-none"
                     >
                       <option value="9001">ISO 9001 (Quality Management)</option>
                       <option value="27001">ISO 27001 (Information Security)</option>
@@ -135,17 +135,17 @@ export default function ConsultationPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-medium text-white">How can we help you?</label>
+                    <label htmlFor="message" className="text-sm font-medium text-foreground">How can we help you?</label>
                     <textarea 
                       id="message" 
                       rows={4}
-                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
+                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
                       placeholder="Tell us a bit about your current compliance status and goals..."
                     ></textarea>
                   </div>
 
                   <div className="pt-4">
-                    <button type="submit" className="w-full group relative inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-white font-medium rounded-full overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-[0_0_40px_rgba(37,99,235,0.4)]">
+                    <button type="submit" className="w-full group relative inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-foreground font-medium rounded-full overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-[0_0_40px_rgba(37,99,235,0.4)]">
                       <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       <span className="relative flex items-center gap-2">
                         Request Consultation <Send className="w-4 h-4" />

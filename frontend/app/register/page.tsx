@@ -1,0 +1,208 @@
+"use client";
+
+import { useState } from "react";
+import { GlassCard } from "@/components/GlassCard";
+import { AnimatedButton } from "@/components/AnimatedButton";
+import { UserPlus, CheckCircle2, Loader2, AlertCircle, Phone, Building2, User } from "lucide-react";
+
+export default function RegisterPage() {
+  const [formData, setFormData] = useState({ 
+    userType: 'company', // 'company' or 'individual'
+    name: '', 
+    email: '', 
+    phone: '',
+    company: '', 
+    standard: '',
+    serviceType: 'both',
+    message: '' 
+  });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('loading');
+    
+    try {
+      const response = await fetch('http://localhost:5000/api/clients', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      
+      const data = await response.json();
+      
+      if (response.ok && data.success) {
+        setStatus('success');
+      } else {
+        throw new Error(data.message || 'Registration failed');
+      }
+    } catch (error: any) {
+      setErrorMessage(error.message || 'An error occurred during registration. Is the backend running?');
+      setStatus('error');
+    }
+  };
+
+  return (
+    <div className="pt-32 pb-20 min-h-screen relative overflow-hidden container mx-auto px-4">
+      <div className="max-w-3xl mx-auto text-center mb-12">
+        <h1 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-4">Get Started</h1>
+        <p className="text-muted-foreground text-lg">Register your company or sign up as an individual trainee for our ISO programs.</p>
+      </div>
+
+      <GlassCard className="max-w-xl mx-auto p-8 border-primary/20">
+        {status === 'success' ? (
+          <div className="flex flex-col items-center justify-center py-12 text-center">
+            <CheckCircle2 className="w-16 h-16 text-green-500 mb-4" />
+            <h2 className="text-2xl font-bold text-foreground mb-2">Registration Successful!</h2>
+            <p className="text-muted-foreground">Your request has been securely submitted. One of our specialists will contact you shortly.</p>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="space-y-6 text-left">
+            {status === 'error' && (
+              <div className="bg-destructive/10 border border-destructive/20 text-destructive p-4 rounded-lg flex items-center">
+                <AlertCircle className="w-5 h-5 mr-3 shrink-0" />
+                <p className="text-sm">{errorMessage}</p>
+              </div>
+            )}
+
+            <div className="space-y-3">
+              <label className="text-sm font-medium text-foreground">Are you registering as a Company or Individual Trainee?</label>
+              <div className="grid grid-cols-2 gap-4">
+                <div 
+                  onClick={() => setFormData({...formData, userType: 'company', serviceType: 'both'})}
+                  className={`flex items-center justify-center space-x-3 cursor-pointer p-4 rounded-lg border transition-colors ${formData.userType === 'company' ? 'border-primary bg-primary/10' : 'border-white/10 bg-white/5 hover:bg-white/10'}`}
+                >
+                  <Building2 className={`w-5 h-5 ${formData.userType === 'company' ? 'text-primary' : 'text-muted-foreground'}`} />
+                  <span className={`text-sm font-medium ${formData.userType === 'company' ? 'text-primary' : 'text-foreground'}`}>Company</span>
+                </div>
+                <div 
+                  onClick={() => setFormData({...formData, userType: 'individual', company: '', serviceType: 'training'})}
+                  className={`flex items-center justify-center space-x-3 cursor-pointer p-4 rounded-lg border transition-colors ${formData.userType === 'individual' ? 'border-primary bg-primary/10' : 'border-white/10 bg-white/5 hover:bg-white/10'}`}
+                >
+                  <User className={`w-5 h-5 ${formData.userType === 'individual' ? 'text-primary' : 'text-muted-foreground'}`} />
+                  <span className={`text-sm font-medium ${formData.userType === 'individual' ? 'text-primary' : 'text-foreground'}`}>Individual Trainee</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-foreground">Full Name</label>
+                <input 
+                  required 
+                  type="text" 
+                  value={formData.name}
+                  onChange={(e) => setFormData({...formData, name: e.target.value})}
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" 
+                  placeholder="Rahul Sharma" 
+                />
+              </div>
+              
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-foreground">Phone Number</label>
+                <div className="relative flex items-center">
+                  <span className="absolute left-4 text-muted-foreground font-medium">+91</span>
+                  <input 
+                    required 
+                    type="tel" 
+                    pattern="[0-9]{10}"
+                    title="Please enter a valid 10-digit Indian mobile number"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({...formData, phone: e.target.value.replace(/\D/g, '').slice(0, 10)})}
+                    className="w-full bg-white/5 border border-white/10 rounded-lg pl-12 pr-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" 
+                    placeholder="98765 43210" 
+                  />
+                </div>
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-foreground">Email Address</label>
+                <input 
+                  required 
+                  type="email" 
+                  value={formData.email}
+                  onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" 
+                  placeholder="rahul@domain.in" 
+                />
+              </div>
+              
+              {formData.userType === 'company' && (
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-foreground">Company Name</label>
+                  <input 
+                    required={formData.userType === 'company'}
+                    type="text" 
+                    value={formData.company}
+                    onChange={(e) => setFormData({...formData, company: e.target.value})}
+                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" 
+                    placeholder="Tech Solutions Pvt Ltd" 
+                  />
+                </div>
+              )}
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-foreground">Which ISO standard are you interested in?</label>
+              <select 
+                required
+                value={formData.standard}
+                onChange={(e) => setFormData({...formData, standard: e.target.value})}
+                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all appearance-none [&>option]:text-background"
+              >
+                <option value="" disabled>Select an ISO standard...</option>
+                <option value="ISO 9001 (Quality Management)">ISO 9001 (Quality Management)</option>
+                <option value="ISO 27001 (Information Security)">ISO 27001 (Information Security)</option>
+                <option value="ISO 14001 (Environmental)">ISO 14001 (Environmental)</option>
+                <option value="ISO 45001 (Occupational Health & Safety)">ISO 45001 (Occupational Health & Safety)</option>
+                <option value="Multiple / Not Sure Yet">Multiple / Not Sure Yet</option>
+              </select>
+            </div>
+
+            {formData.userType === 'company' && (
+              <div className="space-y-3">
+                <label className="text-sm font-medium text-foreground">What services do you require?</label>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <label className="flex items-center space-x-3 cursor-pointer p-3 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
+                    <input type="radio" name="service" value="training" checked={formData.serviceType === 'training'} onChange={(e) => setFormData({...formData, serviceType: e.target.value})} className="accent-primary w-4 h-4" />
+                    <span className="text-sm text-foreground">Training Only</span>
+                  </label>
+                  <label className="flex items-center space-x-3 cursor-pointer p-3 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
+                    <input type="radio" name="service" value="documentation" checked={formData.serviceType === 'documentation'} onChange={(e) => setFormData({...formData, serviceType: e.target.value})} className="accent-primary w-4 h-4" />
+                    <span className="text-sm text-foreground">Documentation</span>
+                  </label>
+                  <label className="flex items-center space-x-3 cursor-pointer p-3 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 transition-colors border-primary/30">
+                    <input type="radio" name="service" value="both" checked={formData.serviceType === 'both'} onChange={(e) => setFormData({...formData, serviceType: e.target.value})} className="accent-primary w-4 h-4" />
+                    <span className="text-sm text-foreground font-medium">I need both</span>
+                  </label>
+                </div>
+              </div>
+            )}
+            
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-foreground">Additional Details (Optional)</label>
+              <textarea 
+                rows={3}
+                value={formData.message}
+                onChange={(e) => setFormData({...formData, message: e.target.value})}
+                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" 
+                placeholder={formData.userType === 'company' ? "Tell us a bit about your current compliance status or specific requirements..." : "Tell us about your background or why you want to take this training..."} 
+              />
+            </div>
+            
+            <AnimatedButton type="submit" disabled={status === 'loading'} className="w-full justify-center">
+              {status === 'loading' ? (
+                <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Processing...</>
+              ) : (
+                <><UserPlus className="w-4 h-4 mr-2" /> Submit Request</>
+              )}
+            </AnimatedButton>
+          </form>
+        )}
+      </GlassCard>
+    </div>
+  );
+}

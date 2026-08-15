@@ -4,33 +4,33 @@
 
 @layer base {
   :root {
-    --background: 216 60% 8%; /* #081120 in hsl approx */
-    --foreground: 0 0% 100%;
+    --background: 222 47% 6%; /* #081120 */
+    --foreground: 0 0% 100%; /* #ffffff */
     
-    --card: 216 60% 12%;
+    --card: 222 47% 9%;
     --card-foreground: 0 0% 100%;
     
-    --popover: 216 60% 8%;
+    --popover: 222 47% 6%;
     --popover-foreground: 0 0% 100%;
     
-    --primary: 221 83% 53%; /* #2563EB */
+    --primary: 221 83% 53%; /* Blue: #2563EB */
     --primary-foreground: 0 0% 100%;
     
-    --secondary: 217 91% 60%; /* #3B82F6 */
+    --secondary: 217 91% 20%; /* Dark blue */
     --secondary-foreground: 0 0% 100%;
     
-    --muted: 216 20% 20%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 216 20% 15%;
+    --muted-foreground: 215 20% 75%;
     
-    --accent: 214 100% 68%; /* #60A5FA */
-    --accent-foreground: 216 60% 8%;
+    --accent: 214 100% 68%; /* Light Blue */
+    --accent-foreground: 222 47% 6%;
     
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 216 20% 20%;
     --input: 216 20% 20%;
-    --ring: 214 100% 68%;
+    --ring: 221 83% 53%; /* Blue */
     
     --radius: 1.5rem;
   }
@@ -44,11 +44,18 @@
     @apply bg-background text-foreground;
     background-color: #081120;
     color: #ffffff;
+    background-image: 
+      radial-gradient(at 0% 0%, hsla(221,83%,53%,0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, hsla(214,100%,68%,0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, hsla(221,83%,53%,0.15) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, hsla(214,100%,68%,0.1) 0px, transparent 50%);
+    background-attachment: fixed;
+    background-size: cover;
   }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-white/5 backdrop-blur-lg border border-white/10 shadow-xl;
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)];
   }
 }

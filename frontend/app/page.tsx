@@ -35,10 +35,10 @@ export default function Home() {
           >
             <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/30 mb-8">
               <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse" />
-              <span className="text-sm font-medium text-white">Next-Gen ISO Platform</span>
+              <span className="text-sm font-medium text-foreground">Next-Gen ISO Platform</span>
             </motion.div>
             
-            <motion.h1 variants={fadeInUp} className="text-5xl sm:text-6xl lg:text-7xl font-heading font-extrabold text-white leading-[1.1] tracking-tight mb-6">
+            <motion.h1 variants={fadeInUp} className="text-5xl sm:text-6xl lg:text-7xl font-heading font-extrabold text-foreground leading-[1.1] tracking-tight mb-6">
               Transform Your Organization with <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">AI-Powered</span> ISO Compliance
             </motion.h1>
             
@@ -84,7 +84,7 @@ export default function Home() {
                       <Shield className="w-5 h-5 text-green-400" />
                     </div>
                     <div>
-                      <div className="text-sm font-bold text-white">ISO 27001</div>
+                      <div className="text-sm font-bold text-foreground">ISO 27001</div>
                       <div className="text-xs text-green-400">100% Compliant</div>
                     </div>
                   </div>
@@ -105,7 +105,7 @@ export default function Home() {
                       <Zap className="w-5 h-5 text-accent" />
                     </div>
                     <div>
-                      <div className="text-sm font-bold text-white mb-1">AI Assistant</div>
+                      <div className="text-sm font-bold text-foreground mb-1">AI Assistant</div>
                       <div className="text-xs text-muted-foreground leading-relaxed">
                         Generating Risk Assessment Policy based on ISO 9001:2015 standards...
                       </div>
@@ -128,7 +128,7 @@ export default function Home() {
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-48 h-48 rounded-full bg-gradient-to-tr from-primary to-accent blur-[40px] opacity-50" />
                 <div className="w-32 h-32 rounded-full glass border border-white/20 flex items-center justify-center shadow-[0_0_80px_rgba(37,99,235,0.4)]">
-                  <Award className="w-16 h-16 text-white" />
+                  <Award className="w-16 h-16 text-foreground" />
                 </div>
               </div>
             </div>
@@ -144,7 +144,7 @@ export default function Home() {
           </p>
           <div className="flex justify-center gap-12 sm:gap-24 opacity-50 flex-wrap">
             {['Acme Corp', 'GlobalScale', 'TechNova', 'Nexus Solutions', 'Quantum Industries'].map((company, i) => (
-              <div key={i} className="text-xl font-heading font-bold text-white tracking-widest uppercase">
+              <div key={i} className="text-xl font-heading font-bold text-foreground tracking-widest uppercase">
                 {company}
               </div>
             ))}
@@ -170,7 +170,7 @@ export default function Home() {
               className="flex flex-col items-center text-center p-6 glass rounded-2xl"
             >
               <stat.icon className="w-8 h-8 text-primary mb-4" />
-              <div className="text-4xl font-heading font-bold text-white mb-2">{stat.value}</div>
+              <div className="text-4xl font-heading font-bold text-foreground mb-2">{stat.value}</div>
               <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider">{stat.label}</div>
             </motion.div>
           ))}
@@ -182,7 +182,7 @@ export default function Home() {
         <div className="glass rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden border-primary/20">
           <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent" />
           <div className="relative z-10 max-w-3xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-6">
+            <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-6">
               Ready to achieve compliance?
             </h2>
             <p className="text-lg text-muted-foreground mb-10">

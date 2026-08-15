@@ -137,13 +137,13 @@ export default function StandardsPage() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/30 mb-6"
           >
             <FileText className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium text-white">Explore ISO Standards</span>
+            <span className="text-sm font-medium text-foreground">Explore ISO Standards</span>
           </motion.div>
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold text-white mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold text-foreground mb-6"
           >
             Global Standards for <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Modern Enterprise</span>
           </motion.h1>
@@ -172,11 +172,11 @@ export default function StandardsPage() {
                     <standard.icon className={`w-7 h-7 ${standard.color}`} />
                   </div>
                   <div className="text-right">
-                    <div className="text-2xl font-heading font-bold text-white">{standard.title}</div>
+                    <div className="text-2xl font-heading font-bold text-foreground">{standard.title}</div>
                   </div>
                 </div>
                 
-                <h3 className="text-xl font-bold text-white mb-3">{standard.subtitle}</h3>
+                <h3 className="text-xl font-bold text-foreground mb-3">{standard.subtitle}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1">
                   {standard.description}
                 </p>
@@ -185,7 +185,7 @@ export default function StandardsPage() {
                   {standard.benefits.map((benefit, idx) => (
                     <div key={idx} className="flex items-center gap-2">
                       <CheckCircle2 className={`w-4 h-4 ${standard.color}`} />
-                      <span className="text-sm font-medium text-white/80">{benefit}</span>
+                      <span className="text-sm font-medium text-foreground/80">{benefit}</span>
                     </div>
                   ))}
                 </div>

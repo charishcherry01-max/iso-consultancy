@@ -41,7 +41,7 @@ export const Navbar = () => {
         <div className="container mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">
             <Image src="/logo.png" alt="Sri Management Logo" width={40} height={40} className="rounded-xl object-contain bg-white" />
-            <span className="text-xl font-heading font-bold tracking-tight text-white">
+            <span className="text-xl font-heading font-bold tracking-tight text-foreground">
               Sri Management
             </span>
           </Link>
@@ -52,7 +52,7 @@ export const Navbar = () => {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-white transition-colors"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
                 {link.name}
               </Link>
@@ -60,17 +60,14 @@ export const Navbar = () => {
           </nav>
 
           <div className="hidden md:flex items-center gap-4">
-            <AnimatedButton variant="outline" href="/contact">
-              Contact
-            </AnimatedButton>
-            <AnimatedButton href="/consultation">
-              Start Consultation
+            <AnimatedButton href="/register">
+              Register
             </AnimatedButton>
           </div>
 
           {/* Mobile Menu Toggle */}
           <button
-            className="md:hidden text-white p-2"
+            className="md:hidden text-foreground p-2"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X /> : <Menu />}
@@ -92,17 +89,14 @@ export const Navbar = () => {
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-2xl font-heading font-bold text-white border-b border-border/50 pb-4"
+                className="text-2xl font-heading font-bold text-foreground border-b border-border/50 pb-4"
               >
                 {link.name}
               </Link>
             ))}
             <div className="mt-auto flex flex-col gap-4">
-              <AnimatedButton variant="outline" href="/contact" className="w-full justify-center">
-                Contact
-              </AnimatedButton>
-              <AnimatedButton href="/consultation" className="w-full justify-center">
-                Start Consultation
+              <AnimatedButton href="/register" className="w-full justify-center">
+                Register
               </AnimatedButton>
             </div>
           </motion.div>
