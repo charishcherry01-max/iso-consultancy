@@ -42,18 +42,6 @@ export default function TrainingPage() {
               <h2 className="text-2xl font-bold text-foreground mb-3">{mod.title}</h2>
               <p className="text-muted-foreground mb-6 leading-relaxed">{mod.description}</p>
             </div>
-            
-            <div>
-              <div className="w-full bg-black/40 rounded-full h-2 mb-4 overflow-hidden border border-white/5">
-                <div 
-                  className="bg-blue-500 h-2 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.8)]" 
-                  style={{ width: `${mod.progress}%` }}
-                ></div>
-              </div>
-              <button className={`w-full py-3 ${mod.buttonClass} text-foreground rounded-lg transition-colors font-medium`}>
-                {mod.buttonText}
-              </button>
-            </div>
           </GlassCard>
         ))}
       </div>
