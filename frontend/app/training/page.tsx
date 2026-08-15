@@ -1,4 +1,5 @@
 import { GlassCard } from "@/components/GlassCard";
+import { AnimatedButton } from "@/components/AnimatedButton";
 
 export default function TrainingPage() {
   const modules = [
@@ -39,8 +40,13 @@ export default function TrainingPage() {
         {modules.map((mod, index) => (
           <GlassCard key={index} className="p-8 flex flex-col justify-between hover:scale-[1.02] transition-transform duration-300">
             <div>
-              <h2 className="text-2xl font-bold text-foreground mb-3">{mod.title}</h2>
+              <h2 className="text-2xl font-heading font-bold text-foreground mb-3">{mod.title}</h2>
               <p className="text-muted-foreground mb-6 leading-relaxed">{mod.description}</p>
+            </div>
+            <div className="mt-4 pt-4 border-t border-white/10">
+              <AnimatedButton variant="outline" className="w-full justify-center">
+                {mod.buttonText}
+              </AnimatedButton>
             </div>
           </GlassCard>
         ))}
