@@ -148,26 +148,47 @@ export default function RegisterPage() {
 
             <div className="space-y-3">
               <label className="text-sm font-medium text-foreground">Which ISO standard are you interested in?</label>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2">
-                {[
-                  "ISO 9001 (Quality Management)",
-                  "ISO 27001 (Information Security)",
-                  "ISO 14001 (Environmental)",
-                  "ISO 45001 (Occupational Health & Safety)",
-                  "Multiple / Not Sure Yet"
-                ].map((std) => (
-                  <div 
-                    key={std}
-                    onClick={() => setFormData({...formData, standard: std})}
-                    className={`flex items-center space-x-3 cursor-pointer p-3 rounded-lg border transition-colors ${formData.standard === std ? 'border-primary bg-primary/10' : 'border-white/10 bg-white/5 hover:bg-white/10'}`}
-                  >
-                    <div className={`w-4 h-4 rounded-full border flex items-center justify-center shrink-0 ${formData.standard === std ? 'border-primary' : 'border-muted-foreground'}`}>
-                      {formData.standard === std && <div className="w-2 h-2 rounded-full bg-primary" />}
-                    </div>
-                    <span className={`text-sm ${formData.standard === std ? 'text-primary font-medium' : 'text-foreground'}`}>{std}</span>
-                  </div>
-                ))}
+              
+              <div 
+                onClick={() => setShowStandards(!showStandards)}
+                className="flex items-center justify-between w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-foreground cursor-pointer hover:bg-white/10 transition-colors"
+              >
+                <span className={formData.standard ? 'text-primary font-medium' : 'text-muted-foreground'}>
+                  {formData.standard || "Select an ISO standard..."}
+                </span>
+                {showStandards ? <ChevronUp className="w-5 h-5 text-muted-foreground" /> : <ChevronDown className="w-5 h-5 text-muted-foreground" />}
               </div>
+
+              {showStandards && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2 p-3 bg-black/20 border border-white/10 rounded-lg">
+                  {[
+                    "ISO 9001 (Quality Management)",
+                    "ISO 14001 (Environmental)",
+                    "ISO 45001 (Occupational Health & Safety)",
+                    "ISO 27001 (Information Security)",
+                    "ISO 22301 (Business Continuity)",
+                    "ISO 50001 (Energy Management)",
+                    "ISO 22000 (Food Safety)",
+                    "ISO 37001 (Anti-Bribery)",
+                    "ISO 42001 (Artificial Intelligence)",
+                    "Multiple / Not Sure Yet"
+                  ].map((std) => (
+                    <div 
+                      key={std}
+                      onClick={() => {
+                        setFormData({...formData, standard: std});
+                        setShowStandards(false); // Auto-close when selected
+                      }}
+                      className={`flex items-center space-x-3 cursor-pointer p-3 rounded-lg border transition-colors ${formData.standard === std ? 'border-primary bg-primary/10' : 'border-white/10 bg-white/5 hover:bg-white/10'}`}
+                    >
+                      <div className={`w-4 h-4 rounded-full border flex items-center justify-center shrink-0 ${formData.standard === std ? 'border-primary' : 'border-muted-foreground'}`}>
+                        {formData.standard === std && <div className="w-2 h-2 rounded-full bg-primary" />}
+                      </div>
+                      <span className={`text-sm ${formData.standard === std ? 'text-primary font-medium' : 'text-foreground'}`}>{std}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
 
             {formData.userType === 'company' && (
