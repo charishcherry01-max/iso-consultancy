@@ -136,46 +136,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Trusted Companies */}
-      <section className="mt-32 border-y border-border/50 bg-white/5 backdrop-blur-sm py-10">
-        <div className="container mx-auto px-4 overflow-hidden">
-          <p className="text-center text-sm font-medium text-muted-foreground mb-8">
-            TRUSTED BY FORWARD-THINKING ENTERPRISES GLOBALLY
-          </p>
-          <div className="flex justify-center gap-12 sm:gap-24 opacity-50 flex-wrap">
-            {['Acme Corp', 'GlobalScale', 'TechNova', 'Nexus Solutions', 'Quantum Industries'].map((company, i) => (
-              <div key={i} className="text-xl font-heading font-bold text-foreground tracking-widest uppercase">
-                {company}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Statistics */}
-      <section className="container mx-auto px-4 mt-32">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {[
-            { icon: Users, label: "Clients", value: "500+" },
-            { icon: Award, label: "Certificates", value: "1000+" },
-            { icon: TrendingUp, label: "Success Rate", value: "98%" },
-            { icon: Globe, label: "ISO Standards", value: "20+" },
-          ].map((stat, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="flex flex-col items-center text-center p-6 glass rounded-2xl"
-            >
-              <stat.icon className="w-8 h-8 text-primary mb-4" />
-              <div className="text-4xl font-heading font-bold text-foreground mb-2">{stat.value}</div>
-              <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider">{stat.label}</div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="container mx-auto px-4 mt-32">
