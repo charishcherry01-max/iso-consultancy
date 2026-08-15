@@ -11,7 +11,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4 group">
-              <Image src="/logo.png" alt="Sri Management Logo" width={32} height={32} className="rounded-lg object-contain bg-white" />
+              <Image src="/logo-new.jpg" alt="Sri Management Logo" width={32} height={32} className="rounded-lg object-contain bg-white" />
               <span className="text-lg font-heading font-bold text-white">
                 Sri Management
               </span>
