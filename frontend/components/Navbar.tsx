@@ -40,7 +40,7 @@ export const Navbar = () => {
       >
         <div className="container mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">
-            <Image src="/logo.png" alt="Sri Management Logo" width={40} height={40} className="rounded-xl object-contain bg-white" />
+            <Image src="/logo-new.png" alt="Sri Management Logo" width={40} height={40} className="rounded-xl object-contain bg-white" />
             <span className="text-xl font-heading font-bold tracking-tight text-foreground">
               Sri Management
             </span>
