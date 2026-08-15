@@ -20,7 +20,7 @@ export const Footer = () => {
               Empowering organizations globally with AI-driven ISO compliance, training, and certification solutions.
             </p>
             <div className="flex flex-col gap-2 mb-6">
-              <span className="text-sm text-muted-foreground text-left">G-10, 12-12-999, Kiran Heights Appartments, Bharath Nagar, Hyderabad</span>
+              <span className="text-sm text-muted-foreground text-left">G-10, 12-12-999, Kiran Heights Appartments,<br />Bharath Nagar, Hyderabad</span>
               <a href="mailto:sri.qci@gmail.com" className="text-sm text-muted-foreground hover:text-primary transition-colors">sri.qci@gmail.com</a>
               <a href="tel:+919396884261" className="text-sm text-muted-foreground hover:text-primary transition-colors">+91 93968 84261</a>
             </div>
