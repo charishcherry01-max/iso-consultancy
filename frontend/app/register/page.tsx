@@ -147,14 +147,14 @@ export default function RegisterPage() {
             </div>
 
             <div className="space-y-3">
-              <label className="text-sm font-medium text-foreground">Which training standard are you interested in?</label>
+              <label className="text-sm font-medium text-foreground">Which ISO standard are you interested in?</label>
               
               <div 
                 onClick={() => setShowStandards(!showStandards)}
                 className="flex items-center justify-between w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-foreground cursor-pointer hover:bg-white/10 transition-colors"
               >
                 <span className={formData.standard ? 'text-primary font-medium' : 'text-muted-foreground'}>
-                  {formData.standard || "Select a training standard..."}
+                  {formData.standard || "Select an ISO standard..."}
                 </span>
                 {showStandards ? <ChevronUp className="w-5 h-5 text-muted-foreground" /> : <ChevronDown className="w-5 h-5 text-muted-foreground" />}
               </div>
@@ -162,10 +162,10 @@ export default function RegisterPage() {
               {showStandards && (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2 p-3 bg-black/20 border border-white/10 rounded-lg">
                   {[
-                    "Awareness",
-                    "Internal Auditor",
-                    "Lead Auditor",
-                    "Lead Implementor",
+                    "ISO 9001 (Quality Management)",
+                    "ISO 27001 (Information Security)",
+                    "ISO 14001 (Environmental)",
+                    "ISO 45001 (Occupational Health & Safety)",
                     "Multiple / Not Sure Yet"
                   ].map((std) => (
                     <div 
