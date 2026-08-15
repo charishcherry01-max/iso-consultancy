@@ -24,7 +24,7 @@ export const Footer = () => {
               <a href="mailto:sri.qci@gmail.com" className="text-sm text-muted-foreground hover:text-primary transition-colors">sri.qci@gmail.com</a>
               <a href="tel:+919396884261" className="text-sm text-muted-foreground hover:text-primary transition-colors">+91 93968 84261</a>
             </div>
-            <div className="flex gap-4">
+            <div className="flex gap-4 mb-6">
               <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
                 <Twitter className="w-5 h-5" />
               </Link>
@@ -34,6 +34,17 @@ export const Footer = () => {
               <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
                 <Github className="w-5 h-5" />
               </Link>
+            </div>
+            <div className="w-full h-40 rounded-lg overflow-hidden border border-white/10">
+              <iframe 
+                src="https://maps.google.com/maps?q=Kiran+Heights+Apartments,+Bharath+Nagar,+Hyderabad&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen 
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
           </div>
 
