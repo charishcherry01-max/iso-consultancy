@@ -12,7 +12,7 @@ export default function RegisterPage() {
     email: '', 
     phone: '',
     company: '', 
-    standard: '',
+    standard: [] as string[],
     serviceType: 'both',
     message: '' 
   });
@@ -28,7 +28,7 @@ export default function RegisterPage() {
       const response = await fetch('/api/clients', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({ ...formData, standard: formData.standard.join(', ') })
       });
       
       const data = await response.json();
@@ -153,40 +153,48 @@ export default function RegisterPage() {
                 onClick={() => setShowStandards(!showStandards)}
                 className="flex items-center justify-between w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-foreground cursor-pointer hover:bg-white/10 transition-colors"
               >
-                <span className={formData.standard ? 'text-primary font-medium' : 'text-muted-foreground'}>
-                  {formData.standard || "Select an ISO standard..."}
+                <span className={formData.standard.length > 0 ? 'text-primary font-medium' : 'text-muted-foreground'}>
+                  {formData.standard.length > 0 ? formData.standard.join(', ') : "Select ISO standards..."}
                 </span>
-                {showStandards ? <ChevronUp className="w-5 h-5 text-muted-foreground" /> : <ChevronDown className="w-5 h-5 text-muted-foreground" />}
+                {showStandards ? <ChevronUp className="w-5 h-5 text-muted-foreground shrink-0 ml-2" /> : <ChevronDown className="w-5 h-5 text-muted-foreground shrink-0 ml-2" />}
               </div>
 
               {showStandards && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2 p-3 bg-black/20 border border-white/10 rounded-lg">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2 p-3 bg-black/20 border border-white/10 rounded-lg max-h-[300px] overflow-y-auto">
                   {[
-                    "ISO 9001 (Quality Management)",
-                    "ISO 14001 (Environmental)",
-                    "ISO 45001 (Occupational Health & Safety)",
-                    "ISO 27001 (Information Security)",
-                    "ISO 22301 (Business Continuity)",
-                    "ISO 50001 (Energy Management)",
-                    "ISO 22000 (Food Safety)",
-                    "ISO 37001 (Anti-Bribery)",
-                    "ISO 42001 (Artificial Intelligence)",
+                    "ISO 9001",
+                    "ISO 14001",
+                    "ISO 45001",
+                    "ISO 27001",
+                    "ISO 22301",
+                    "ISO 50001",
+                    "ISO 22000",
+                    "ISO 37001",
+                    "ISO 42001",
                     "Multiple / Not Sure Yet"
-                  ].map((std) => (
-                    <div 
-                      key={std}
-                      onClick={() => {
-                        setFormData({...formData, standard: std});
-                        setShowStandards(false); // Auto-close when selected
-                      }}
-                      className={`flex items-center space-x-3 cursor-pointer p-3 rounded-lg border transition-colors ${formData.standard === std ? 'border-primary bg-primary/10' : 'border-white/10 bg-white/5 hover:bg-white/10'}`}
-                    >
-                      <div className={`w-4 h-4 rounded-full border flex items-center justify-center shrink-0 ${formData.standard === std ? 'border-primary' : 'border-muted-foreground'}`}>
-                        {formData.standard === std && <div className="w-2 h-2 rounded-full bg-primary" />}
+                  ].map((std) => {
+                    const isSelected = formData.standard.includes(std);
+                    return (
+                      <div 
+                        key={std}
+                        onClick={() => {
+                          let newStandards;
+                          if (isSelected) {
+                            newStandards = formData.standard.filter(s => s !== std);
+                          } else {
+                            newStandards = [...formData.standard, std];
+                          }
+                          setFormData({...formData, standard: newStandards});
+                        }}
+                        className={`flex items-center space-x-3 cursor-pointer p-3 rounded-lg border transition-colors ${isSelected ? 'border-primary bg-primary/10' : 'border-white/10 bg-white/5 hover:bg-white/10'}`}
+                      >
+                        <div className={`w-4 h-4 rounded-sm border flex items-center justify-center shrink-0 ${isSelected ? 'border-primary bg-primary text-primary-foreground' : 'border-muted-foreground'}`}>
+                          {isSelected && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="w-3 h-3"><polyline points="20 6 9 17 4 12"></polyline></svg>}
+                        </div>
+                        <span className={`text-sm ${isSelected ? 'text-primary font-medium' : 'text-foreground'}`}>{std}</span>
                       </div>
-                      <span className={`text-sm ${formData.standard === std ? 'text-primary font-medium' : 'text-foreground'}`}>{std}</span>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               )}
             </div>
