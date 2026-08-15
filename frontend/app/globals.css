@@ -50,8 +50,15 @@
       radial-gradient(at 100% 100%, hsla(221,83%,53%,0.15) 0px, transparent 50%),
       radial-gradient(at 0% 100%, hsla(214,100%,68%,0.1) 0px, transparent 50%);
     background-attachment: fixed;
-    background-size: cover;
+    background-size: 200% 200%;
+    animation: moveGradients 30s ease-in-out infinite alternate;
   }
+}
+
+@keyframes moveGradients {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 100%; }
 }
 
 @layer utilities {
