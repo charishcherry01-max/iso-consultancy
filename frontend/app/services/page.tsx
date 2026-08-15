@@ -16,6 +16,11 @@ import { AnimatedButton } from "@/components/AnimatedButton";
 
 const services = [
   {
+    icon: Search,
+    title: "Gap Analysis",
+    description: "Detailed assessment of your current systems against ISO requirements to identify areas for improvement.",
+  },
+  {
     icon: GraduationCap,
     title: "ISO Training",
     description: "Comprehensive training modules for your entire organization, tailored to specific ISO standards.",
@@ -24,11 +29,6 @@ const services = [
     icon: FileText,
     title: "Documentation",
     description: "AI-assisted generation and management of required ISO documents, manuals, and procedures.",
-  },
-  {
-    icon: Search,
-    title: "Gap Analysis",
-    description: "Detailed assessment of your current systems against ISO requirements to identify areas for improvement.",
   },
   {
     icon: ClipboardCheck,
@@ -49,11 +49,6 @@ const services = [
     icon: AlertTriangle,
     title: "Risk Assessment",
     description: "Identify, evaluate, and mitigate organizational risks with our automated risk management tools.",
-  },
-  {
-    icon: Layers,
-    title: "Integrated Management",
-    description: "Seamlessly combine multiple ISO standards (e.g., 9001, 14001, 27001) into a single unified system.",
   },
 ];
 
