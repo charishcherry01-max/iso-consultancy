@@ -4,33 +4,33 @@
 
 @layer base {
   :root {
-    --background: 222 47% 6%; /* #081120 */
+    --background: 185 49% 8%; /* Dark Teal #0a1c1e */
     --foreground: 0 0% 100%; /* #ffffff */
     
-    --card: 222 47% 9%;
+    --card: 185 49% 11%;
     --card-foreground: 0 0% 100%;
     
-    --popover: 222 47% 6%;
+    --popover: 185 49% 8%;
     --popover-foreground: 0 0% 100%;
     
-    --primary: 221 83% 53%; /* Blue: #2563EB */
+    --primary: 185 49% 25%; /* Logo Teal #215b61 */
     --primary-foreground: 0 0% 100%;
     
-    --secondary: 217 91% 20%; /* Dark blue */
+    --secondary: 185 49% 15%; 
     --secondary-foreground: 0 0% 100%;
     
-    --muted: 216 20% 15%;
-    --muted-foreground: 215 20% 75%;
+    --muted: 185 20% 15%;
+    --muted-foreground: 185 20% 75%;
     
-    --accent: 214 100% 68%; /* Light Blue */
-    --accent-foreground: 222 47% 6%;
+    --accent: 78 59% 53%; /* Logo Green #a4d03c */
+    --accent-foreground: 185 49% 8%;
     
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 216 20% 20%;
-    --input: 216 20% 20%;
-    --ring: 221 83% 53%; /* Blue */
+    --border: 185 20% 20%;
+    --input: 185 20% 20%;
+    --ring: 185 49% 25%;
     
     --radius: 1.5rem;
   }
@@ -42,13 +42,13 @@
   }
   body {
     @apply bg-background text-foreground;
-    background-color: #081120;
+    background-color: #0a1c1e;
     color: #ffffff;
     background-image: 
-      radial-gradient(at 0% 0%, hsla(221,83%,53%,0.15) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, hsla(214,100%,68%,0.15) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, hsla(221,83%,53%,0.15) 0px, transparent 50%),
-      radial-gradient(at 0% 100%, hsla(214,100%,68%,0.1) 0px, transparent 50%);
+      radial-gradient(at 0% 0%, hsla(185,49%,25%,0.2) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, hsla(78,59%,53%,0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, hsla(185,49%,25%,0.2) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, hsla(192,19%,67%,0.1) 0px, transparent 50%);
     background-attachment: fixed;
     background-size: cover;
   }
