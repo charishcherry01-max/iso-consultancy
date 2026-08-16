@@ -70,20 +70,22 @@ export default function RegisterPage() {
             <div className="space-y-3">
               <label className="text-sm font-medium text-foreground">Are you registering as a Company or Individual Trainee?</label>
               <div className="grid grid-cols-2 gap-4">
-                <div 
+                <button 
+                  type="button"
                   onClick={() => setFormData({...formData, userType: 'company', serviceType: 'both'})}
                   className={`flex items-center justify-center space-x-3 cursor-pointer p-4 rounded-lg border transition-colors ${formData.userType === 'company' ? 'border-primary bg-primary/10' : 'border-white/10 bg-white/5 hover:bg-white/10'}`}
                 >
                   <Building2 className={`w-5 h-5 ${formData.userType === 'company' ? 'text-primary' : 'text-muted-foreground'}`} />
                   <span className={`text-sm font-medium ${formData.userType === 'company' ? 'text-primary' : 'text-foreground'}`}>Company</span>
-                </div>
-                <div 
+                </button>
+                <button 
+                  type="button"
                   onClick={() => setFormData({...formData, userType: 'individual', company: '', serviceType: 'training'})}
                   className={`flex items-center justify-center space-x-3 cursor-pointer p-4 rounded-lg border transition-colors ${formData.userType === 'individual' ? 'border-primary bg-primary/10' : 'border-white/10 bg-white/5 hover:bg-white/10'}`}
                 >
                   <User className={`w-5 h-5 ${formData.userType === 'individual' ? 'text-primary' : 'text-muted-foreground'}`} />
                   <span className={`text-sm font-medium ${formData.userType === 'individual' ? 'text-primary' : 'text-foreground'}`}>Individual Trainee</span>
-                </div>
+                </button>
               </div>
             </div>
             
@@ -149,15 +151,16 @@ export default function RegisterPage() {
             <div className="space-y-3">
               <label className="text-sm font-medium text-foreground">Which ISO standard are you interested in?</label>
               
-              <div 
+              <button 
+                type="button"
                 onClick={() => setShowStandards(!showStandards)}
                 className="flex items-center justify-between w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-foreground cursor-pointer hover:bg-white/10 transition-colors"
               >
-                <span className={formData.standard.length > 0 ? 'text-primary font-medium' : 'text-muted-foreground'}>
+                <span className={`truncate mr-2 ${formData.standard.length > 0 ? 'text-primary font-medium' : 'text-muted-foreground'}`}>
                   {formData.standard.length > 0 ? formData.standard.join(', ') : "Select ISO standards..."}
                 </span>
                 {showStandards ? <ChevronUp className="w-5 h-5 text-muted-foreground shrink-0 ml-2" /> : <ChevronDown className="w-5 h-5 text-muted-foreground shrink-0 ml-2" />}
-              </div>
+              </button>
 
               {showStandards && (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2 p-3 bg-black/20 border border-white/10 rounded-lg max-h-[300px] overflow-y-auto">
@@ -175,7 +178,8 @@ export default function RegisterPage() {
                   ].map((std) => {
                     const isSelected = formData.standard.includes(std);
                     return (
-                      <div 
+                      <button 
+                        type="button"
                         key={std}
                         onClick={() => {
                           let newStandards;
@@ -186,13 +190,13 @@ export default function RegisterPage() {
                           }
                           setFormData({...formData, standard: newStandards});
                         }}
-                        className={`flex items-center space-x-3 cursor-pointer p-3 rounded-lg border transition-colors ${isSelected ? 'border-primary bg-primary/10' : 'border-white/10 bg-white/5 hover:bg-white/10'}`}
+                        className={`w-full text-left flex items-center space-x-3 cursor-pointer p-3 rounded-lg border transition-colors ${isSelected ? 'border-primary bg-primary/10' : 'border-white/10 bg-white/5 hover:bg-white/10'}`}
                       >
                         <div className={`w-4 h-4 rounded-sm border flex items-center justify-center shrink-0 ${isSelected ? 'border-primary bg-primary text-primary-foreground' : 'border-muted-foreground'}`}>
                           {isSelected && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="w-3 h-3"><polyline points="20 6 9 17 4 12"></polyline></svg>}
                         </div>
                         <span className={`text-sm ${isSelected ? 'text-primary font-medium' : 'text-foreground'}`}>{std}</span>
-                      </div>
+                      </button>
                     );
                   })}
                 </div>
