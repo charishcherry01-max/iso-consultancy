@@ -9,8 +9,17 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" });
 
 export const metadata: Metadata = {
-  title: "AI-Powered ISO Compliance Platform",
+  metadataBase: new URL('https://www.srimanagement.in'),
+  title: "AI-Powered ISO Compliance Platform | SRI Management",
   description: "Transform Your Organization with AI-Powered ISO Compliance",
+  openGraph: {
+    title: "AI-Powered ISO Compliance Platform | SRI Management",
+    description: "Transform Your Organization with AI-Powered ISO Compliance",
+    url: "https://www.srimanagement.in",
+    siteName: "SRI Management",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
