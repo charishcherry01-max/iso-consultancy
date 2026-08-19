@@ -191,7 +191,7 @@ export default function StandardsPage() {
                 </div>
 
                 <div className="mt-auto pt-6 border-t border-white/10">
-                  <AnimatedButton variant="glass" className="w-full justify-center" href={`/consultation?standard=${standard.id}`}>
+                  <AnimatedButton variant="glass" className="w-full justify-center" href={`/register?standard=${standard.id}`}>
                     Get Certified
                   </AnimatedButton>
                 </div>

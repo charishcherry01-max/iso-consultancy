@@ -47,7 +47,7 @@ export default function Home() {
             </motion.p>
             
             <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-4">
-              <AnimatedButton size="lg" href="/consultation">
+              <AnimatedButton size="lg" href="/register">
                 Start Consultation
               </AnimatedButton>
               <AnimatedButton variant="glass" size="lg" href="/standards">
@@ -148,7 +148,7 @@ export default function Home() {
             <p className="text-lg text-muted-foreground mb-10">
               Join hundreds of companies that have streamlined their ISO certification process with our AI-powered platform.
             </p>
-            <AnimatedButton size="lg" href="/consultation">
+            <AnimatedButton size="lg" href="/register">
               Book Your Free Consultation
             </AnimatedButton>
           </div>
