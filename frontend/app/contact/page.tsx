@@ -67,14 +67,11 @@ export default function ContactPage() {
                 <h3 className="text-xl font-bold text-foreground mb-2">Call Us</h3>
                 <p className="text-muted-foreground text-sm mb-3">Mon-Fri from 9am to 6pm.</p>
                 <div className="flex flex-col gap-2">
-                  <a href="tel:+917075704677" className="text-lg font-medium text-foreground hover:text-primary transition-colors">
-                    +91 70757 04677
+                  <a href="tel:+918977402032" className="text-lg font-medium text-foreground hover:text-primary transition-colors">
+                    +91 89774 02032
                   </a>
                   <a href="tel:+918179629984" className="text-lg font-medium text-foreground hover:text-primary transition-colors">
                     +91 81796 29984
-                  </a>
-                  <a href="tel:+918977402032" className="text-lg font-medium text-foreground hover:text-primary transition-colors">
-                    +91 89774 02032
                   </a>
                 </div>
               </div>

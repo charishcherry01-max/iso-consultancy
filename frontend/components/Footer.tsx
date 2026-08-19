@@ -23,9 +23,8 @@ export const Footer = () => {
               <span className="text-sm text-muted-foreground text-left">G-10, 12-12-999, Kiran Heights Appartments,<br />Bharath Nagar, Hyderabad</span>
               <a href="mailto:sri.qci@gmail.com" className="text-sm text-muted-foreground hover:text-primary transition-colors">sri.qci@gmail.com</a>
               <a href="mailto:sri.isoofficial@gmail.com" className="text-sm text-muted-foreground hover:text-primary transition-colors">sri.isoofficial@gmail.com</a>
-              <a href="tel:+917075704677" className="text-sm text-muted-foreground hover:text-primary transition-colors">+91 70757 04677</a>
-              <a href="tel:+918179629984" className="text-sm text-muted-foreground hover:text-primary transition-colors">+91 81796 29984</a>
               <a href="tel:+918977402032" className="text-sm text-muted-foreground hover:text-primary transition-colors">+91 89774 02032</a>
+              <a href="tel:+918179629984" className="text-sm text-muted-foreground hover:text-primary transition-colors">+91 81796 29984</a>
             </div>
             <div className="flex gap-4 mb-6">
               <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
